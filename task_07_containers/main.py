@@ -1,50 +1,37 @@
 def get_input_parameters():
-    """
-    Получаем список весов контейнеров и вес нового контейнера
-    Незабываем проверит данные: все числа целые и не превышают 200.
+    container_list = []
+    container_count = int(input('Введите кол-во контенеров: '))
+    for _ in range(container_count):
+        container = int(input('Введите веса контенера: '))
+        if container < 200:
+            container_list.append(container)
+        else:
+            print('Вес слишком большой')
+    new_container = int(input('Введите вес нового контенера: '))
 
-    :return: список весов контейнеров и вес нового контейнера,
-             например: ([165, 163, 160, 160, 157, 157, 155, 154], 162)
-    :rtype: Tuple[List[int], int]
-    """
-    # TODO: в этой функции пишем весь необходимый код для
-    #  получения входных параметров.
-    #  Логику расчётов тут не программируем
-    pass
+    return container_list, new_container
+
+
+
 
 
 def display_result(serial_number_new_container):
-    """
-    Выводим порядковый номер нового контейнера.
 
-    :param serial_number_new_container: порядковый номер нового контейнера, например: 3
-    :type serial_number_new_container: int
-    """
-    # TODO: в этой функции пишем весь необходимый код
-    #  для вывода результата в нужном формате.
-    #  Логику расчётов тут не программируем
-    pass
+    print('Порядковый номер нового контенера', serial_number_new_container)
+
 
 
 def search_serial_number_new_container(list_container_weights, new_container_weight):
-    """
-    Ищем куда вставим новый контейнер.
 
-    :param list_container_weights: список весов контейнеров, например: [165, 163, 160, 160, 157, 157, 155, 154]
-    :type list_container_weights: List[int]
-    :param new_container_weight: вес нового контейнера, например: 166
-    :type new_container_weight: int
 
-    :return: порядковый номер нового контейнера, например: 3
-    :rtype: int
-    """
-    # TODO: в этой функции пишем логику поиска куда вставим новый контейнер.
-    #  print'ов и input'ов тут не должно быть.
-    #  Функция на вход принимает ранее полученные данные
-    #  (из функции get_input_parameters).
-    #  Функция на выход отдаёт результат необходимый для отображения работы программы,
-    #  который будет передан в функцию display_result.
-    pass
+    row = 0
+    for  c in range(len(list_container_weights)):
+        row = c + 1
+        if list_container_weights[c] < new_container_weight:
+            break
+    print('Номер куда вставить контенер', row)
+    return row
+
 
 
 if __name__ == '__main__':

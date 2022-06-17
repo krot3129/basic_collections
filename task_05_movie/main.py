@@ -1,53 +1,37 @@
-def get_input_parameters():
-    """
-    Получаем список фильмов, которые пользователь хочет добавить в "любимые"
+from cmath import e
 
-    :return: добавляемые фильмы, например: ["Леон", "Безумный Макс", "Мементо", "Царь горы"]
-    :rtype: List[str]
-    """
-    # TODO: в этой функции пишем весь необходимый код для
-    #  получения входных параметров.
-    #  Логику расчётов тут не программируем
-    pass
+
+def get_input_parameters():
+
+    love_film = []
+    film_count = int(input('Сколько фильмов хотите добавить: '))
+    for _ in range(film_count):
+        fil = input('Введите название фильма: ')
+        love_film.append(fil)
+    return love_film
+
+
 
 
 def display_result(favorite_films, errors):
-    """
-    Выводим список ошибок и список любимых фильмов
 
-    :param favorite_films: список любимых фильмов, например: ["Леон", "Мементо"]
-    :type favorite_films: List[str]
-    :param errors: список ненайденных фильмов, например: ["Безумный Макс", "Царь горы"]
-    :type errors: List[str]
-    """
-    # TODO: в этой функции пишем весь необходимый код
-    #  для вывода результата в нужном формате.
-    #  Логику расчётов тут не программируем
-    pass
+    print('Ваш список любимых фильмов:', favorite_films)
+
+
 
 
 def add_favorite_film(new_favorite_films, available_films):
-    """
-    Добавляем фильмы в список "любимых".
 
-    :param new_favorite_films: фильмы, которые нужно добавить в "любимые",
-           например: ["Леон", "Безумный Макс", "Мементо", "Царь горы"]
-    :type new_favorite_films: List[str]
-    :param available_films: фильмы, которые есть на киносайте,
-           например: ["Леон", "Назад в будущее", "Мементо"]
-    :type available_films: List[str]
+    film = []
+    errors = []
+    for i in new_favorite_films:
+        if i in available_films:
+            film.append(i)
+        else:
+            errors.append(i)
+            print("Ошибка такого фильма нет на сайте!")
 
-    :return: Список фильмов в списке "любимых" и список не найденных фильмов,
-             например: (["Леон", "Мементо"], ["Безумный Макс", "Царь горы"])
-    :rtype: Tuple[List[str], List[str]]
-    """
-    # TODO: в этой функции пишем логику добавлениея фильмов в список "любимых".
-    #  print'ов и input'ов тут не должно быть.
-    #  Функция на вход принимает ранее полученные данные
-    #  (из функции get_input_parameters).
-    #  Функция на выход отдаёт результат необходимый для отображения работы программы,
-    #  который будет передан в функцию display_result.
-    pass
+    return film, errors
 
 
 if __name__ == '__main__':
